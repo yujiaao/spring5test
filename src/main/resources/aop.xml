@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+
+    <bean id="cat1" class="com.demo.animal.Cat">
+    </bean>
+
+    <bean id="rat1" class="com.demo.animal.Rat">
+    </bean>
+
+    <aop:config>
+
+        <aop:pointcut id="cat_mark" expression="execution(* com.demo.animal.Cat.mark(..))"  />
+
+        <aop:aspect ref="rat1">
+            <aop:before method="sleep" pointcut-ref="cat_mark" />
+            <aop:after method="run" pointcut-ref="cat_mark" />
+        </aop:aspect>
+
+    </aop:config>
+   
+
+</beans>
