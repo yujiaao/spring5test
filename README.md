@@ -4,4 +4,4 @@
 To run this project, just use maven in command line:
 
 
-     mvn exec:java 
+     mvn package exec:java 
